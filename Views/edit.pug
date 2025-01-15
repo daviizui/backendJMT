@@ -1,6 +1,6 @@
 head
   meta(charset='utf-8')
-  title Create
+  title Edit
   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
 
   body
@@ -11,15 +11,14 @@ head
           // Modal Body
           .modal-body
             //#editForm.form(role='form' method='GET' action='https://www.google.com/')
-            form(role='form' method='POST' action='/create')
+            form(role='form' method='POST' action='/edit')
               div.form-group
-                label(for='name') Nome:
-                input#name.form-control(type='text', placeholder='nome' name='name')
+                label(for='name') Name:
+                input#name.form-control(type='text', placeholder='name' name='name' value=client.name)
               div.form-group
                 label(for='email') Email:
-                input#email.form-control(type='email', placeholder='name@email.com' name='email')
-              button.btn.btn-primary(type="submit", name="asdf") Submit
-             
+                input#email.form-control(type='email', placeholder='name@email.com' name='email' value=client.email)
+              button.btn.btn-primary(type="submit", name="asdf") Edit
           
 
     // footer

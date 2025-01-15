@@ -10,7 +10,8 @@ export default db.define('client',{
     },
     nome:{
         type: sequelize.STRING,
-        allowNull:false
+        allowNull:false, 
+        defaultValue: 'Unnamed Client'
     },
     email:{
         type: sequelize.STRING,

@@ -3,20 +3,28 @@ import { IClients } from "../Model/clients";
 import clientsModel from "../Model/clientsModel";
 
 async function index(req: Request, res: Response, next: any){
-    //resp.render('index')
-    const clents = await clientsModel.findAll();
-    res.json(clents)
+    const clients = await clientsModel.findAll();
+    res.json(clients)
 }
 
-function create(req: Request, res: Response, next: any){
+async function show(req: Request, res: Response, next: any){
+    const client = await clientsModel.findByPk(req.params.id);
+    res.json(client)
+}
+
+async function create(req: Request, res: Response, next: any){
     res.render("create")
 }
 
 async function store(req: Request, res: Response, next: any){
-    let client = req.body as IClients
-    await clientsModel.create({...client})
-    res.redirect('/')
-   
+    const clients = req.body as IClients;
+    await clientsModel.create({...clients});    
+    res.redirect('/');
 }
 
-export default {index,create,store}
+async function edit(req: Request, res: Response, next: any){
+    const client = await clientsModel.findByPk(req.params.id);
+    res.render("edit", {clients:client})
+}
+
+export default {index,create,store,show, edit}
